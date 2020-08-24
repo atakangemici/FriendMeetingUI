@@ -25,10 +25,11 @@ export class HomeComponent implements OnInit {
   loginForm: boolean;
   subjectHide: boolean;
   url: boolean;
+  appUrl : string;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = false;
-
+    this.appUrl = "https://localhost:44341";
   }
 
   loginFormShow() {
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   userAdd(user) {
-    this.http.post<any>('https://localhost:44341/api/app/register', user.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl +'/api/app/register', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -44,16 +45,15 @@ export class HomeComponent implements OnInit {
   }
 
   Login(user) {
-    this.http.post<any>('https://localhost:44341/api/app/login', user.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl +'/api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
-      this.questionForm = true;
 
     })
   }
 
   addQuestion(question) {
     question.form.value.user_id = this.userId;
-    this.http.post<any>('https://localhost:44341/api/app/add_question', question.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl +'/api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = "";
       this.subjectHide = true;
@@ -61,12 +61,14 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  eventStart() {
-    this.userFormShow = true;
+  async eventStart() {
+    const response = await this.http.get(this.appUrl + '/api/app/delete_questions/'+ this.userId).toPromise();
+
+    this.questionForm = true;
   }
 
   complate() {
-    this.questionDetail = "http://localhost:4200/questions-detail/" + this.userId;
+    this.questionDetail = "http://localhost:4200/questionsdetail/" + this.userId;
   }
 
   ngOnInit(): void {

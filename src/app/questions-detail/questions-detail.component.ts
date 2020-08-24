@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router , ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-questions-detail',
@@ -7,13 +8,45 @@ import { Router , ActivatedRoute } from '@angular/router';
   styleUrls: ['./questions-detail.component.scss']
 })
 export class QuestionsDetailComponent implements OnInit {
-  url : boolean;
-  constructor(public activatedRoute : ActivatedRoute) {
-    this.url = false;
+  url: boolean;
+  appUrl: string;
+  questions: object;
+  subject: string;
+  metin: string;
+  reply:any[];
+  replyOption:any[];
+  questionForm : any[];
 
-   }
+  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
+    this.url = this.activatedRoute.url['value']['1']['path'];
+    this.appUrl = "https://localhost:44341";
+
+  }
+
+  async getQuestion() {
+    const response = await this.http.get(this.appUrl + '/api/app/get_questions/' + this.url).toPromise();
+    this.questions = response;
+
+    for (let i = 0; i < Object.keys(response).length; i++) {
+
+      if (response[i]["subject"] != null) {
+        this.subject = response[i]["subject"];
+      }
+
+    }
+
+  }
+
+  async addReply(questions) {
+    let response = questions;
+    // this.http.post<any>(this.appUrl +'/api/app/login', user.form.value).subscribe(data => {
+    //   this.userId = data;
+
+    // })
+  }
 
   ngOnInit(): void {
+    this.getQuestion();
   }
 
 }
