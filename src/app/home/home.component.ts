@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent {
+export class HomeComponent implements OnInit {
+
   title = 'friends';
   questionForm: boolean;
   userFormShow: boolean;
@@ -66,6 +67,9 @@ export class AppComponent {
 
   complate() {
     this.questionDetail = "http://localhost:4200/questions-detail/" + this.userId;
+  }
+
+  ngOnInit(): void {
   }
 
 }
