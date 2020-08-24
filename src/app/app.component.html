@@ -311,40 +311,80 @@
 
   <button type="button" class="btn btn-danger" (click)="eventStart()" *ngIf="!userFormShow">Etkinlik Başlat</button>
 
-  <form style="padding-top: 5%;" *ngIf="userFormShow && !questionForm" #userForm="ngForm">
-   
-    <div class="form-group">
-      <label for="formGroupExampleInput" style="color: white;">Kullanıcı Adı</label>
-      <input type="text" class="form-control" name="user_name" [ngModel]="user_name" id="formGroupExampleInput" >
+  <button type="button" class="btn btn-danger" style="margin-top: 10%;"
+    *ngIf="!userFormShow">Cevapları Gör</button>
 
-      <label for="formGroupExampleInput"  style="color: white;">Şifre</label>
-      <input type="password" name="password"  class="form-control" [ngModel]="password" id="formGroupExampleInput">
+  <form style="padding-top: 5%;" *ngIf="userFormShow && !questionForm" #userForm="ngForm">
+
+    <div class="form-group" *ngIf="!loginForm">
+      <label for="formGroupExampleInput" style="color: white;">İsim Soyisim</label>
+      <input type="text" class="form-control" name="name_surename" [ngModel]="name_surename" id="formGroupExampleInput">
+
+      <label for="formGroupExampleInput" style="color: white;">Kullanıcı Adı</label>
+      <input type="text" class="form-control" name="user_name" [ngModel]="user_name" id="formGroupExampleInput">
+
+      <label for="formGroupExampleInput" style="color: white;">Şifre</label>
+      <input type="password" name="password" class="form-control" [ngModel]="password" id="formGroupExampleInput">
     </div>
-   
-    <button type="button" class="btn btn-info" style="margin-top: 10%;" (click)="userAdd(userForm)">Kayıt Ol / Giriş Yap</button>
+
+    <div class="form-group" *ngIf="loginForm">
+      <label for="formGroupExampleInput" *ngIf="!loginForm" style="color: white;">İsim Soyisim</label>
+      <input type="text" class="form-control" *ngIf="!loginForm" name="name_surename" [ngModel]="name_surename"
+        id="formGroupExampleInput">
+
+      <label for="formGroupExampleInput" style="color: white;">Kullanıcı Adı</label>
+      <input type="text" class="form-control" name="user_name" [ngModel]="user_name" id="formGroupExampleInput">
+
+      <label for="formGroupExampleInput" style="color: white;">Şifre</label>
+      <input type="password" name="password" class="form-control" [ngModel]="password" id="formGroupExampleInput">
+    </div>
+
+    <button type="button" class="btn btn-info" style="margin-top: 10%;" *ngIf="!loginForm"
+      (click)="userAdd(userForm)">Kayıt Ol</button>
+    <label *ngIf="!loginForm">Zaten bir hesabın var mı ?</label>
+
+    <button type="button" class="btn btn-info" style="margin-top: 10%;" (click)="loginFormShow()"
+      *ngIf="!loginForm">Giriş</button>
+
+    <button type="button" class="btn btn-info" style="margin-top: 10%;" (click)="Login(userForm)"
+      *ngIf="loginForm">Giriş Yap</button>
 
   </form>
 
-  <form style="padding-top: 5%;" *ngIf="questionForm" #questionForm="ngForm">
+  <form style="padding-top: 5%;" *ngIf="questionForm && !questionDetail" #questionForm="ngForm">
     <nav aria-label="breadcrumb" style="padding-top: 20%;">
       <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page" style="color:black">Sorularını Hazırla</li>
       </ol>
     </nav>
     <div class="form-group">
+      <label for="formGroupExampleInput" *ngIf="!subjectHide" style="color: white;">Konu</label>
+      <input type="text" class="form-control" *ngIf="!subjectHide" name="subject" [ngModel]="subject"
+        id="formGroupExampleInput" placeholder="Konu">
+    </div>
+    <div class="form-group">
       <label for="formGroupExampleInput" style="color: white;">Soru</label>
-      <input type="text" class="form-control" name="question" [ngModel]="question" id="formGroupExampleInput" placeholder="Sorunuz">
+      <input type="text" class="form-control" name="question" [ngModel]="question" id="formGroupExampleInput"
+        placeholder="Sorunuz">
     </div>
     <label for="exampleFormControlSelect1" style="color: white;">Soru Biçimi</label>
     <select class="form-control" name="question_type" [ngModel]="question_type" id="exampleFormControlSelect1">
       <option>Seçenek Düğmesi</option>
       <option>Metin</option>
     </select>
-    <button type="button" class="btn btn-info" (click)="addQuestion(questionForm)" style="margin-top: 10%;">Kaydet</button>
-    
+    <button type="button" class="btn btn-info" (click)="addQuestion(questionForm)"
+      style="margin-top: 10%;">Kaydet</button>
+
     <button type="button" class="btn btn-danger" style="margin-top: 10%;" (click)="complate()">Bitir</button>
 
   </form>
+
+  <nav aria-label="breadcrumb" *ngIf="questionDetail" style="padding-top: 20%;">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page" style="color:black">Arkadaşlarınla Paylaş</li>
+    </ol>
+  </nav>
+
   <label style="color:white">{{questionDetail}}</label>
 
 </div>

@@ -14,17 +14,33 @@ export class AppComponent {
   userFormShow: boolean;
   password: string;
   user_name: string;
+  name_surename: string;
   question: string;
+  subject: string;
   question_type: string;
   userId: number;
-  questionDetail : string;
+  questionDetail: string;
+  loginForm: boolean;
+  subjectHide: boolean;
 
   constructor(public http: HttpClient) {
 
   }
 
+  loginFormShow() {
+    this.loginForm = true;
+  }
+
   userAdd(user) {
-    this.http.post<any>('https://localhost:44341/api/app/add_user', user.form.value).subscribe(data => {
+    this.http.post<any>('https://localhost:44341/api/app/register', user.form.value).subscribe(data => {
+      this.userId = data;
+      this.questionForm = true;
+
+    })
+  }
+
+  Login(user) {
+    this.http.post<any>('https://localhost:44341/api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -36,6 +52,7 @@ export class AppComponent {
     this.http.post<any>('https://localhost:44341/api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = "";
+      this.subjectHide = true;
       this.question_type = "";
     })
   }
@@ -44,8 +61,8 @@ export class AppComponent {
     this.userFormShow = true;
   }
 
-  complate(){
-    this.questionDetail = "http://localhost:4200/question-detail/" + this.userId;
+  complate() {
+    this.questionDetail = "http://localhost:4200/questions-detail/" + this.userId;
   }
 
 }
