@@ -300,54 +300,70 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner" style="background-color: #b02d30;">
-  <img width="40" alt="Angular Logo"
-    src="https://www.clipartmax.com/png/middle/179-1798974_friendship-png-photo-refer-a-friend-icon.png" />
-  <span>Friend Meeting</span>
+  <img width="40"
+    src="https://img.favpng.com/3/13/21/computer-icons-below-the-line-desktop-wallpaper-advertising-clip-art-png-favpng-gYFRXpm4dFjfpc3eBu5Z1K0Ew_t.jpg" />
+  <span>Activity</span>
   <div class="spacer"></div>
 
 </div>
 
 <div class="content" role="main" style="background-color: #2f2f2f;">
+  <div id="wrapper"  *ngIf="userId && !questionForm">
+    <a href="#" class="my-super-cool-btn">
+      <div class="dots-container" >
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <span (click)="eventStart()" style="    font-size: 19px;
+      color: white;">Ektinlik Başlat</span>
+    </a>
 
-  <button type="button" class="btn btn-danger" (click)="eventStart()" *ngIf="userId && !questionForm">Etkinlik
-    Başlat</button>
+   
+  </div>
 
-  <button type="button" class="btn btn-danger" style="margin-top: 10%;" *ngIf="userId && !questionForm" (click)="getReply()">Cevapları
-    Gör</button>
+  <div id="wrapper"  *ngIf="userId && !questionForm">
+ 
+    <a href="replys" class="my-super-cool-btn">
+      <div class="dots-container" >
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <span  style="    font-size: 19px;
+      color: white;">Cevapları Gör</span>
+    </a>
+  </div>
+ 
+
 
   <form style="padding-top: 5%;" *ngIf="!userId" #userForm="ngForm">
 
-    <div class="form-group" *ngIf="!loginForm">
-      <label for="formGroupExampleInput" style="color: white;">İsim Soyisim</label>
-      <input type="text" class="form-control" name="name_surename" [ngModel]="name_surename" id="formGroupExampleInput">
+    <div class="form-group">
+      <label *ngIf="!loginForm" for="formGroupExampleInput" style="color: white;">İsim Soyisim</label>
+      <input *ngIf="!loginForm" type="text" class="form-control" name="name_surename" [ngModel]="name_surename" id="formGroupExampleInput">
 
-      <label for="formGroupExampleInput" style="color: white;">Kullanıcı Adı</label>
+      <label for="formGroupExampleInput" style="color: white;margin-top: 5%;">Kullanıcı Adı</label>
       <input type="text" class="form-control" name="user_name" [ngModel]="user_name" id="formGroupExampleInput">
 
-      <label for="formGroupExampleInput" style="color: white;">Şifre</label>
+      <label for="formGroupExampleInput" style="color: white;margin-top: 5%;">Şifre</label>
       <input type="password" name="password" class="form-control" [ngModel]="password" id="formGroupExampleInput">
     </div>
 
-    <div class="form-group" *ngIf="loginForm">
-      <label for="formGroupExampleInput" *ngIf="!loginForm" style="color: white;">İsim Soyisim</label>
-      <input type="text" class="form-control" *ngIf="!loginForm" name="name_surename" [ngModel]="name_surename"
-        id="formGroupExampleInput">
 
-      <label for="formGroupExampleInput" style="color: white;">Kullanıcı Adı</label>
-      <input type="text" class="form-control" name="user_name" [ngModel]="user_name" id="formGroupExampleInput">
-
-      <label for="formGroupExampleInput" style="color: white;">Şifre</label>
-      <input type="password" name="password" class="form-control" [ngModel]="password" id="formGroupExampleInput">
+    <div class="row" style="text-align: center;">
+      <div class="col-12"> <button type="button" class="btn btn-info" style="margin-top: 10%;    width: 100%;" *ngIf="!loginForm"
+        (click)="userAdd(userForm)">Kayıt Ol</button></div>
+      <div class="col-12" style="    margin-top: 5%;"> <label style="color:white" *ngIf="!loginForm">Zaten bir hesabın var mı ?</label></div>
+    
+      <div class="col-12">
+        <button type="button" class="btn btn-info" style="margin-top: 5%;    width: 100%;" (click)="loginFormShow()"
+          *ngIf="!loginForm">Giriş Yap</button></div>
     </div>
 
-    <button type="button" class="btn btn-info" style="margin-top: 10%;" *ngIf="!loginForm"
-      (click)="userAdd(userForm)">Kayıt Ol</button>
-    <label *ngIf="!loginForm">Zaten bir hesabın var mı ?</label>
-
-    <button type="button" class="btn btn-info" style="margin-top: 10%;" (click)="loginFormShow()"
-      *ngIf="!loginForm">Giriş</button>
-
-    <button type="button" class="btn btn-info" style="margin-top: 10%;" (click)="Login(userForm)"
+    <button type="button" class="btn btn-info" style="margin-top: 10%;width: 100%;" (click)="Login(userForm)"
       *ngIf="loginForm">Giriş Yap</button>
 
   </form>
@@ -355,11 +371,12 @@
   <form style="padding-top: 5%;" *ngIf="questionForm && !questionDetail" #questionForm="ngForm">
     <nav aria-label="breadcrumb" style="padding-top: 20%;">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page" style="color:black;    margin: auto;">Sorularını Hazırla</li>
+        <i class="fa fa-cloud" aria-hidden="true"></i>
+<li class="breadcrumb-item active" aria-current="page" style="color:black;    margin: auto;    font-weight: bold;">Sorularını Hazırla</li>
       </ol>
     </nav>
     <div class="form-group">
-      <label for="formGroupExampleInput" *ngIf="!subjectHide" style="color: white;">Konu</label>
+      <label for="formGroupExampleInput" *ngIf="!subjectHide" style="color: white;margin-top: 10%;">Konu</label>
       <input type="text" class="form-control" *ngIf="!subjectHide" name="subject" [ngModel]="subject"
         id="formGroupExampleInput" placeholder="Konu">
     </div>
@@ -373,19 +390,28 @@
       <option value="secenek">Seçenek Düğmesi</option>
       <option value="metin">Metin</option>
     </select>
-    <button type="button" class="btn btn-info" (click)="addQuestion(questionForm)"
-      style="margin-top: 10%;">Kaydet</button>
+    <div class="row">
+      <div class="col-12"> <button type="button" class="btn btn-info" (click)="addQuestion(questionForm)"
+        style="margin-top: 15%;width: 100%;">Kaydet</button></div>
+      <div class="col-12"> <button type="button" class="btn btn-danger" style="margin-top: 10%;width: 100%;" (click)="complate()">Bitir</button></div>
+     
+    </div>
+   
 
-    <button type="button" class="btn btn-danger" style="margin-top: 10%;" (click)="complate()">Bitir</button>
+   
 
   </form>
 
-  <nav aria-label="breadcrumb" *ngIf="questionDetail" style="padding-top: 20%;">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page" style="color:black">Arkadaşlarınla Paylaş</li>
-    </ol>
-  </nav>
 
-  <label style="color:white">{{questionDetail}}</label>
+
+  <div *ngIf="questionDetail" style="padding-top: 20%;padding-left: 7%;">
+   
+    <button class="corner-button">
+      <span>Paylaş</span>
+    </button>
+  </div>
+
+  <label style="color:white;    margin-top: 10%;
+  padding-left: 7%;">{{questionDetail}}</label>
 
 </div>
