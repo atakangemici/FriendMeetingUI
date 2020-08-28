@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   url: boolean;
   appUrl : string;
 
-  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
+  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router) {
     this.url = false;
     this.appUrl = "https://localhost:44341";
   }
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   userAdd(user) {
     this.http.post<any>(this.appUrl +'/api/app/register', user.form.value).subscribe(data => {
       this.userId = data;
-      this.questionForm = true;
+      
 
     })
   }
@@ -69,6 +69,12 @@ export class HomeComponent implements OnInit {
 
   complate() {
     this.questionDetail = "http://localhost:4200/questions/" + this.userId;
+  }
+
+  
+  getReply(){
+    this.route.navigateByUrl("/replys");
+
   }
 
   ngOnInit(): void {

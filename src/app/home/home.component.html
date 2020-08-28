@@ -312,7 +312,7 @@
   <button type="button" class="btn btn-danger" (click)="eventStart()" *ngIf="userId && !questionForm">Etkinlik
     Başlat</button>
 
-  <button type="button" class="btn btn-danger" style="margin-top: 10%;" *ngIf="userId && !questionForm">Cevapları
+  <button type="button" class="btn btn-danger" style="margin-top: 10%;" *ngIf="userId && !questionForm" (click)="getReply()">Cevapları
     Gör</button>
 
   <form style="padding-top: 5%;" *ngIf="!userId" #userForm="ngForm">
@@ -355,7 +355,7 @@
   <form style="padding-top: 5%;" *ngIf="questionForm && !questionDetail" #questionForm="ngForm">
     <nav aria-label="breadcrumb" style="padding-top: 20%;">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page" style="color:black">Sorularını Hazırla</li>
+        <li class="breadcrumb-item active" aria-current="page" style="color:black;    margin: auto;">Sorularını Hazırla</li>
       </ol>
     </nav>
     <div class="form-group">

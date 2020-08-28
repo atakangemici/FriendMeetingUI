@@ -38,11 +38,11 @@ export class QuestionsDetailComponent implements OnInit {
   }
 
   async addReply(questions) {
-    let response = questions;
-    // this.http.post<any>(this.appUrl +'/api/app/login', user.form.value).subscribe(data => {
-    //   this.userId = data;
+    questions.form.value.userId = this.url;
+    this.http.post<any>(this.appUrl +'/api/app/add_reply', questions.form.value).subscribe(data => {
+      const result = data;
 
-    // })
+    })
   }
 
   ngOnInit(): void {
