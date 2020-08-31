@@ -47,6 +47,8 @@ export class HomeComponent implements OnInit {
   Login(user) {
     this.http.post<any>(this.appUrl +'/api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
+      localStorage.setItem('user', JSON.stringify(this.userId));
+
 
     })
   }

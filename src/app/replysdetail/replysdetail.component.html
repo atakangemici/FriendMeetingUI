@@ -13,19 +13,16 @@
         margin: auto;margin-top: 10%;" src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
             alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title" style="color: cadetblue;">@Card title</h5>
+            <h5 class="card-title" style="color: cadetblue;">@{{respondentName}}</h5>
             <p class="card-text" style="    font-size: 20px;
-            margin-top: 15%;">Konu</p>
+            margin-top: 15%;color: #ffc200;">Konu : {{subject}}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li style="background-color: transparent;" class="list-group-item">
-                <label style="width: 100%;    font-size: 16px;font-weight: bold;    font-size: 18px;">Soru</label>
-                <label style="margin-top: 5%;">Cevap</label>
+            <li *ngFor="let reply of replys" style="background-color: transparent;" class="list-group-item">
+                <label style="width: 100%;    font-size: 16px;font-weight: bold;    font-size: 18px;">Soru : {{reply.question}}</label>
+                <label style="margin-top: 5%;">Cevap : {{reply.reply}}</label>
             </li>
-            <li style="background-color: transparent;" class="list-group-item">
-                <label style="width: 100%;    font-size: 16px;font-weight: bold;    font-size: 18px;">Soru</label>
-                <label style="margin-top: 5%;">Cevap</label>
-            </li>
+            
 
         </ul>
 

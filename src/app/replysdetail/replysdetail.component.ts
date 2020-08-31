@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-replysdetail',
@@ -6,10 +8,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./replysdetail.component.scss']
 })
 export class ReplysdetailComponent implements OnInit {
+  replys: object;
+  user: object;
+  appUrl: string;
+  subject: string;
+  respondentName: string;
 
-  constructor() { }
+  constructor(public http: HttpClient, private route: ActivatedRoute) {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.appUrl = "https://localhost:44341";
 
-  ngOnInit(): void {
+
   }
+  async getReplys() {
+    let user = {};
+    user["id"] = this.replys;
+
+    this.http.post<any>(this.appUrl + '/api/app/get_replys', user).subscribe(data => {
+      this.replys = data;
+      this.subject = data[0]["subject"];
+      this.respondentName = data[0]["respondent_name"];
+    })
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.replys = params['id'];
+    });
+
+
+
+    this.getReplys();
+  }
+
 
 }

@@ -16,7 +16,7 @@
 
     <ul class="list-group list-group-flush list my--3">
 
-        <li (click)="getReplysDetail();" class="list-group-item px-0" style="background-color: transparent !important;">
+        <li *ngFor="let reply of replys" (click)="goReplysDetail(reply.id);" class="list-group-item px-0" style="background-color: transparent !important;">
 
             <div class="row align-items-center">
                 <div class="col-auto">
@@ -24,49 +24,25 @@
 
                     <a href="#" class="avatar rounded-circle">
                         <img alt="Image placeholder" style="height: 50px;
-        margin-left: 25%;" src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png">
+        margin-left: 25%;" src="{{avatar}}">
                     </a>
 
 
                 </div>
                 <div class="col ml--2">
                     <h4 class="mb-0">
-                        <a href="#!" style="color:cadetblue;text-decoration: none !important;">@John Michael</a>
+                        <a href="#!" style="color:cadetblue;text-decoration: none !important;">@{{reply.respondent_name}}</a>
                     </h4>
 
                     <span class="text-success">●</span>
-                    <small style="color:white;    margin-left: 2%;">Cevapladı</small>
+                    <small style="color:white;    margin-left: 2%;">Cevapladı / {{reply.reply_date}}</small>
                 </div>
                 <div class="col-auto">
                 </div>
             </div>
         </li>
 
-        <li class="list-group-item px-0" style="background-color: transparent !important;">
-
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <!-- Avatar -->
-
-                    <a href="#" class="avatar rounded-circle">
-                        <img alt="Image placeholder" style="height: 50px;
-        margin-left: 25%;" src="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png">
-                    </a>
-
-
-                </div>
-                <div class="col ml--2">
-                    <h4 class="mb-0">
-                        <a href="#!" style="color:cadetblue;text-decoration: none !important;">@John Michael</a>
-                    </h4>
-
-                    <span class="text-success">●</span>
-                    <small style="color:white;    margin-left: 2%;">Cevapladı</small>
-                </div>
-                <div class="col-auto">
-                </div>
-            </div>
-        </li>
+      
 
     </ul>
 </div>
