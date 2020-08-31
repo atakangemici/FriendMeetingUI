@@ -13,7 +13,7 @@ import { AlertsService } from 'angular-alert-module';
 export class HomeComponent implements OnInit {
 
   title = 'friends';
-  questionForm: boolean;
+  questionFormShow: boolean;
   userFormShow: boolean;
   password: string;
   user_name: string;
@@ -66,16 +66,16 @@ export class HomeComponent implements OnInit {
     question.form.value.user_id = this.userId;
     this.http.post<any>(this.appUrl +'/api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
-      this.question = "";
+      this.question = null;
       this.subjectHide = true;
-      this.question_type = "";
+      this.question_type = null;
     })
   }
 
   async eventStart() {
     const response = await this.http.get(this.appUrl + '/api/app/delete_questions/'+ this.userId).toPromise();
 
-    this.questionForm = true;
+    this.questionFormShow = true;
   }
 
   complate() {

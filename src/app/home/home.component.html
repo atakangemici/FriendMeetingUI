@@ -308,7 +308,7 @@
 </div>
 
 <div class="content" role="main" style="background-color: #2f2f2f;">
-  <div id="wrapper"  *ngIf="userId && !questionForm">
+  <div id="wrapper"  *ngIf="userId && !questionFormShow">
     <a href="#" class="my-super-cool-btn">
       <div class="dots-container" >
         <div class="dot"></div>
@@ -323,7 +323,7 @@
    
   </div>
 
-  <div id="wrapper"  *ngIf="userId && !questionForm">
+  <div id="wrapper"  *ngIf="userId && !questionFormShow">
  
     <a href="replys" class="my-super-cool-btn">
       <div class="dots-container" >
@@ -368,7 +368,7 @@
 
   </form>
 
-  <form style="padding-top: 5%;" *ngIf="questionForm && !questionDetail" #questionForm="ngForm">
+  <form style="padding-top: 5%;" *ngIf="questionFormShow && !questionDetail" #questionForm="ngForm">
     <nav aria-label="breadcrumb" style="padding-top: 20%;">
       <ol class="breadcrumb">
         <i class="fa fa-cloud" aria-hidden="true"></i>
@@ -376,7 +376,7 @@
       </ol>
     </nav>
     <div class="form-group">
-      <label for="formGroupExampleInput" *ngIf="!subjectHide" style="color: white;margin-top: 10%;">Konu</label>
+      <label for="formGroupExampleInput" *ngIf="!subjectHide" style="color: white;margin-top: 5%;">Konu</label>
       <input type="text" class="form-control" *ngIf="!subjectHide" name="subject" [ngModel]="subject"
         id="formGroupExampleInput" placeholder="Konu">
     </div>
@@ -387,7 +387,8 @@
     </div>
     <label for="exampleFormControlSelect1" style="color: white;">Soru Biçimi</label>
     <select class="form-control" name="question_type" [ngModel]="question_type" id="exampleFormControlSelect1">
-      <option value="secenek">Seçenek Düğmesi</option>
+     
+      <option value="secenek" selected="selected">Seçenek Düğmesi</option>
       <option value="metin">Metin</option>
     </select>
     <div class="row">
@@ -404,7 +405,7 @@
 
 
 
-  <div *ngIf="questionDetail" style="padding-top: 50%;padding-left: 7%;">
+  <div *ngIf="questionDetail" style="padding-top: 50%;padding-left: 5%;">
    
     <button class="corner-button">
       <span>Paylaş</span>
