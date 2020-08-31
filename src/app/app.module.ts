@@ -12,7 +12,9 @@ import { QuestionsDetailComponent } from './questions-detail/questions-detail.co
 import { HomeComponent } from './home/home.component';
 import { ReplysComponent } from './replys/replys.component';
 import { ReplysdetailComponent } from './replysdetail/replysdetail.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertsModule } from 'angular-alert-module';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,16 @@ import { ReplysdetailComponent } from './replysdetail/replysdetail.component';
     HomeComponent,
     ReplysComponent,
     ReplysdetailComponent
+    
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    AlertsModule.forRoot()
+
 
   ],
   providers: [],

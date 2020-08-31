@@ -13,9 +13,11 @@ export class QuestionsDetailComponent implements OnInit {
   questions: object;
   subject: string;
   metin: string;
-  reply:any[];
-  replyOption:any[];
-  questionForm : any[];
+  reply: any[];
+  replyOption: any[];
+  questionForm: any[];
+  replyName: string;
+  questionFormShow: boolean;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = this.activatedRoute.url['value']['1']['path'];
@@ -37,9 +39,11 @@ export class QuestionsDetailComponent implements OnInit {
 
   }
 
+
   async addReply(questions) {
     questions.form.value.userId = this.url;
-    this.http.post<any>(this.appUrl +'/api/app/add_reply', questions.form.value).subscribe(data => {
+
+    this.http.post<any>(this.appUrl + '/api/app/add_reply', questions.form.value).subscribe(data => {
       const result = data;
 
     })

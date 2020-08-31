@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertsService } from 'angular-alert-module';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
   url: boolean;
   appUrl : string;
 
-  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router) {
+  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router,private alerts: AlertsService) {
     this.url = false;
     this.appUrl = "https://localhost:44341";
   }
@@ -38,9 +39,17 @@ export class HomeComponent implements OnInit {
 
   userAdd(user) {
     this.http.post<any>(this.appUrl +'/api/app/register', user.form.value).subscribe(data => {
-      this.userId = data;
-      
+      if(data){
+        this.userId = data;
+        localStorage.setItem('user', JSON.stringify(this.userId));
 
+        this.alerts.setMessage('All the fields are required','success');
+      }
+      else{
+        this.alerts.setMessage('All the fields are required','error');
+
+      }
+        
     })
   }
 
