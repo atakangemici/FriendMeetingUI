@@ -14,10 +14,7 @@
     <div class="col-md-12">
       <form #questionForm="ngForm" style="    margin-top: 5%;">
 
-        <legend style="text-align: center;">İsim</legend>
-
-        <input type="text" id="replyName" name="replyName" [ngModel]="replyName"
-          style="margin-top: 3%;    height: 85px;">
+      
 
 
         <h1 style="    font-size: 30px;
@@ -47,6 +44,10 @@
         </fieldset>
         <fieldset>
 
+          <legend style="text-align: center;">İsim</legend>
+
+          <input type="text" id="replyName" name="replyName" [ngModel]="replyName"
+            style="margin-top: 3%;    height: 85px;">
 
           <button type="submit" style="    margin-top: 15%;" (click)="addReply(questionForm)">Gönder</button>
         </fieldset>
