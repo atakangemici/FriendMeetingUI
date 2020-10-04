@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/friends'));
+express.static();
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/friends/index.html'));
+res.sendFile(path.join(__dirname+'/friends/src/index.html'));
 });
 
 app.listen(process.env.PORT || 3000, function(){
