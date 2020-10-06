@@ -12,7 +12,7 @@ import { AlertsService } from 'angular-alert-module';
 })
 export class HomeComponent implements OnInit {
 
-  title = 'friends';
+  title = 'Activty';
   questionFormShow: boolean;
   userFormShow: boolean;
   password: string;

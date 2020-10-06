@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'friends';
+  title = 'Activty';
   questionForm: boolean;
   userFormShow: boolean;
   password: string;
