@@ -27,6 +27,7 @@
     "angular-alert-module": "^2.0.3",
     "bootstrap": "^4.5.2",
     "express": "^4.17.1",
+    "manifest.json": "^1.2.0",
     "ngx-toastr": "^13.0.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
