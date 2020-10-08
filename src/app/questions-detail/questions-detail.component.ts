@@ -21,7 +21,7 @@ export class QuestionsDetailComponent implements OnInit {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = this.activatedRoute.url['value']['1']['path'];
-    this.appUrl = "http://www.activityapp.online/";
+    this.appUrl = "http://www.activityapp.online";
 
   }
 
