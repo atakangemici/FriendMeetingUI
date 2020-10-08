@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
   }
 
   complate() {
-    this.questionDetail = "http://localhost:4200/questions/" + this.userId;
+    this.questionDetail = "https://www.activityapp.online/questions/" + this.userId;
   }
 
   
