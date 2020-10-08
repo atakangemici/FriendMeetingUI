@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
   }
 
   complate() {
-    this.questionDetail = "https://www.activityapp.online/questions/" + this.userId;
+    this.questionDetail = "https://activty.herokuapp.com/questions/" + this.userId;
   }
 
   
