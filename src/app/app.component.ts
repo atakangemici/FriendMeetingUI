@@ -35,7 +35,7 @@ export class AppComponent {
   }
 
   userAdd(user) {
-    this.http.post<any>('http://www.activityapp.online/api/app/register', user.form.value).subscribe(data => {
+    this.http.post<any>('https://www.activityapp.online/api/app/register', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -43,7 +43,7 @@ export class AppComponent {
   }
 
   Login(user) {
-    this.http.post<any>('http://www.activityapp.online/api/app/login', user.form.value).subscribe(data => {
+    this.http.post<any>('https://www.activityapp.online/api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -52,7 +52,7 @@ export class AppComponent {
 
   addQuestion(question) {
     question.form.value.user_id = this.userId;
-    this.http.post<any>('http://www.activityapp.online/api/app/add_question', question.form.value).subscribe(data => {
+    this.http.post<any>('https://www.activityapp.online/api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = "";
       this.subjectHide = true;
@@ -65,7 +65,7 @@ export class AppComponent {
   }
 
   complate() {
-    this.questionDetail = "http://www.activityapp.online/questions-detail/" + this.userId;
+    this.questionDetail = "https://www.activityapp.online/questions-detail/" + this.userId;
   }
 
 }
