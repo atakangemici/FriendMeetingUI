@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router,private alerts: AlertsService) {
     this.url = false;
-    this.appUrl = "https://localhost:44341";
+    this.appUrl = "http://www.activityapp.online/";
   }
 
   loginFormShow() {
