@@ -429,9 +429,18 @@ height: 200px;">
 
 </div>
 
- <div *ngIf="questionsUrl && user" style="text-align: center;">
-    <label style="color:white;
-    ">{{questionsUrl}}</label>
+
+<div class="container">
+  <div class="row">
+    <div class="col" *ngIf="questionsUrl && user" style="text-align: center;    width: 400px;
+    height: 200px;
+    word-wrap: break-word;">
+      <label style="color:white;
+      ">{{questionsUrl}}</label>
+
+    </div>
+   
   </div>
+</div>
 
 </div>
