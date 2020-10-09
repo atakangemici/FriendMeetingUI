@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute, private route: Router, private alerts: AlertsService) {
     this.url = false;
-    this.appUrl = "https://localhost:44341/";
+    this.appUrl = "https://activty.herokuapp.com/";
     this.user = JSON.parse(localStorage.getItem('user'));
 
     if (this.user) {
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
   complate() {
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    this.questionsUrl = "https://activty.herokuapp.com/questions/12468862934" + this.user + "87842331254";
+    this.questionsUrl = "https://activty.herokuapp.com//questions/12468862934" + this.user + "87842331254";
   }
 
 

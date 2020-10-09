@@ -16,7 +16,7 @@ export class ReplysdetailComponent implements OnInit {
 
   constructor(public http: HttpClient, private route: ActivatedRoute) {
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.appUrl = "https://localhost:44341/";
+    this.appUrl = "https://activty.herokuapp.com/";
 
 
   }

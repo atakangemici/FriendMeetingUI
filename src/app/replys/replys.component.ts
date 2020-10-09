@@ -15,7 +15,7 @@ export class ReplysComponent implements OnInit {
   avatar : string;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router) {
-    this.appUrl = "https://localhost:44341/";
+    this.appUrl = "https://activty.herokuapp.com/";
     this.user = JSON.parse(localStorage.getItem('user'));
 
     let photo = [

@@ -26,7 +26,7 @@ export class QuestionsDetailComponent implements OnInit {
     var split1 = getUrlId.split("34");
     var split2 = split1[1].split("87");
     this.urlId = split2[0];
-    this.appUrl = "https://localhost:44341/";
+    this.appUrl = "https://activty.herokuapp.com/";
 
   }
 
