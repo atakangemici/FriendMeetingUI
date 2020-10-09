@@ -28,7 +28,7 @@ export class AppComponent {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = false;
-    this.appUrl = "https://activty.herokuapp.com/"
+    this.appUrl = "https://www.activityapp.online/"
   }
 
   loginFormShow() {
