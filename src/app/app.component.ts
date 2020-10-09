@@ -65,7 +65,7 @@ export class AppComponent {
   }
 
   complate() {
-    this.questionDetail = "https://www.activityapp.online/questions-detail/" + this.userId;
+    this.questionDetail = "https://activty.herokuapp.com/questions-detail/" + this.userId;
   }
 
 }
