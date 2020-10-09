@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute, private route: Router, private alerts: AlertsService) {
     this.url = false;
-    this.appUrl = "https://localhost:44341";
+    this.appUrl = "https://activty.herokuapp.com";
     this.user = JSON.parse(localStorage.getItem('user'));
 
     if( this.user){

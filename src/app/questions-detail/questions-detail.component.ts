@@ -22,7 +22,7 @@ export class QuestionsDetailComponent implements OnInit {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = this.activatedRoute.url['value']['1']['path'];
-    this.appUrl = "https://localhost:44341";
+    this.appUrl = "https://activty.herokuapp.com";
 
   }
 

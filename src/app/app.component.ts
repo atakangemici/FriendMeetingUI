@@ -35,7 +35,7 @@ export class AppComponent {
   }
 
   userAdd(user) {
-    this.http.post<any>('https://localhost:44341/api/app/register', user.form.value).subscribe(data => {
+    this.http.post<any>('https://activty.herokuapp.com/api/app/register', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -43,7 +43,7 @@ export class AppComponent {
   }
 
   Login(user) {
-    this.http.post<any>('https://localhost:44341/api/app/login', user.form.value).subscribe(data => {
+    this.http.post<any>('https://activty.herokuapp.com/api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -52,7 +52,7 @@ export class AppComponent {
 
   addQuestion(question) {
     question.form.value.user_id = this.userId;
-    this.http.post<any>('https://localhost:44341/api/app/add_question', question.form.value).subscribe(data => {
+    this.http.post<any>('https://activty.herokuapp.com/api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = "";
       this.subjectHide = true;
@@ -65,7 +65,7 @@ export class AppComponent {
   }
 
   complate() {
-    this.questionDetail = "https://localhost:44341/questions-detail/" + this.userId;
+    this.questionDetail = "https://activty.herokuapp.com/questions-detail/" + this.userId;
   }
 
 }

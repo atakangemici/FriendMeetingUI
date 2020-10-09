@@ -15,7 +15,7 @@ export class ReplysComponent implements OnInit {
   avatar : string;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router) {
-    this.appUrl = "https://localhost:44341";
+    this.appUrl = "https://activty.herokuapp.com";
     this.user = JSON.parse(localStorage.getItem('user'));
 
     let photo = [
@@ -29,7 +29,7 @@ export class ReplysComponent implements OnInit {
       "https://i.pinimg.com/originals/78/54/84/7854843699c1893928012a442386a129.jpg"
     ];
 
-    this.avatar = photo[Math.floor(Math.random()*photo.length)];
+    this.avatar = "https://www.xeus.com/wp-content/uploads/2014/09/One_User_Orange.png";
 
   }
 
