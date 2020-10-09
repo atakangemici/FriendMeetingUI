@@ -29,7 +29,7 @@ export class ReplysComponent implements OnInit {
       "https://i.pinimg.com/originals/78/54/84/7854843699c1893928012a442386a129.jpg"
     ];
 
-    this.avatar = "https://www.xeus.com/wp-content/uploads/2014/09/One_User_Orange.png";
+    this.avatar = "https://cdn4.iconfinder.com/data/icons/web-stuff/100/office_orange-19-512.png";
 
   }
 
