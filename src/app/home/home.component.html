@@ -300,16 +300,20 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner" style="background-color: #b02d30;">
-  <a href="#">
+  <a href="http://localhost:4200/">
     <img width="40" src="https://cdn.iconscout.com/icon/free/png-256/activity-3-124194.png" />
   </a>
-    <span>Activity</span>
-    <div class="spacer"></div>
- 
+  <span>Activity</span>
+  <div class="spacer"></div>
+  <div style="width: 100%;
+ text-align: right;padding-right: 6%;" (click)="signOut()" *ngIf=" user"> <span>
+      Çıkış Yap
+    </span>
+  </div>
 </div>
 
 <div class="content" role="main" style="background-color: #2f2f2f;">
-  <div id="wrapper" *ngIf="userId && !questionFormShow">
+  <div id="wrapper" *ngIf="userId && !questionFormShow && user || homePage">
     <a href="#" class="my-super-cool-btn">
       <div class="dots-container">
         <div class="dot"></div>
@@ -324,7 +328,7 @@
 
   </div>
 
-  <div id="wrapper" *ngIf="userId && !questionFormShow">
+  <div id="wrapper" *ngIf="userId && !questionFormShow && user || homePage">
 
     <a href="replys" class="my-super-cool-btn">
       <div class="dots-container">
@@ -340,7 +344,7 @@
 
 
 
-  <form style="padding-top: 5%;" *ngIf="!userId" #userForm="ngForm">
+  <form style="padding-top: 5%;" *ngIf="!user" #userForm="ngForm">
 
     <div class="form-group">
       <label *ngIf="!loginForm" for="formGroupExampleInput" style="color: white;">İsim Soyisim</label>
@@ -397,7 +401,7 @@
     </select>
     <div class="row">
       <div class="col-12"> <button type="button" class="btn btn-info" (click)="addQuestion(questionForm)"
-          style="margin-top: 15%;width: 100%;">Kaydet</button></div>
+          style="margin-top: 15%;width: 100%;">Sorunu Ekle</button></div>
       <div class="col-12"> <button type="button" class="btn btn-danger" style="margin-top: 10%;width: 100%;"
           (click)="complate()">Bitir</button></div>
 
@@ -409,15 +413,25 @@
   </form>
 
 
+<div *ngIf="questionDetail && user" style="align-items: center;
+display: flex;
+justify-content: center;
+height: 200px;">
+  <nav aria-label="breadcrumb" style="padding-top: 20%;">
+    <ol class="breadcrumb">
+      <i class="fa fa-cloud" aria-hidden="true"></i>
+      <li class="breadcrumb-item active" aria-current="page"
+        style="color:black;    margin: auto;    font-weight: bold;">Linki Kopyala Arkadaşlarınla Paylaş</li>
+    </ol>
+  </nav>
 
-  <div *ngIf="questionDetail" style="padding-top: 50%;padding-left: 5%;">
 
-    <button class="corner-button">
-      <span>Paylaş</span>
-    </button>
+
+</div>
+
+ <div *ngIf="questionDetail && user">
+    <label style="color:white;
+    ">{{questionDetail}}</label>
   </div>
-
-  <label style="color:white;    margin-top: 10%;
-  padding-left: 7%;">{{questionDetail}}</label>
 
 </div>

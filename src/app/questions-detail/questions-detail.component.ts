@@ -18,10 +18,11 @@ export class QuestionsDetailComponent implements OnInit {
   questionForm: any[];
   replyName: string;
   questionFormShow: boolean;
+  thanks: boolean;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = this.activatedRoute.url['value']['1']['path'];
-    this.appUrl = "https://www.activityapp.online";
+    this.appUrl = "https://localhost:44341";
 
   }
 
@@ -45,7 +46,7 @@ export class QuestionsDetailComponent implements OnInit {
 
     this.http.post<any>(this.appUrl + '/api/app/add_reply', questions.form.value).subscribe(data => {
       const result = data;
-
+      this.thanks = true;
     })
   }
 

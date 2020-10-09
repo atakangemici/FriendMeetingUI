@@ -26,11 +26,23 @@ export class HomeComponent implements OnInit {
   loginForm: boolean;
   subjectHide: boolean;
   url: boolean;
-  appUrl : string;
+  appUrl: string;
+  user: object;
+  homePage : boolean;
 
-  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router,private alerts: AlertsService) {
+  constructor(public http: HttpClient, public activatedRoute: ActivatedRoute, private route: Router, private alerts: AlertsService) {
     this.url = false;
-    this.appUrl = "https://www.activityapp.online";
+    this.appUrl = "https://localhost:44341";
+    this.user = JSON.parse(localStorage.getItem('user'));
+
+    if( this.user){
+      this.homePage = true;
+    }
+    else{
+      this.homePage = false;
+
+    }
+
   }
 
   loginFormShow() {
@@ -38,33 +50,40 @@ export class HomeComponent implements OnInit {
   }
 
   userAdd(user) {
-    this.http.post<any>(this.appUrl +'/api/app/register', user.form.value).subscribe(data => {
-      if(data){
+    this.http.post<any>(this.appUrl + '/api/app/register', user.form.value).subscribe(data => {
+      this.questionDetail = null;
+
+      if (data) {
         this.userId = data;
+        this.user = JSON.parse(localStorage.getItem('user'));
+
         localStorage.setItem('user', JSON.stringify(this.userId));
 
-        this.alerts.setMessage('All the fields are required','success');
+        this.alerts.setMessage('All the fields are required', 'success');
       }
-      else{
-        this.alerts.setMessage('All the fields are required','error');
+      else {
+        this.alerts.setMessage('All the fields are required', 'error');
 
       }
-        
+
     })
   }
 
   Login(user) {
-    this.http.post<any>(this.appUrl +'/api/app/login', user.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + '/api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
       localStorage.setItem('user', JSON.stringify(this.userId));
-
+      this.user = JSON.parse(localStorage.getItem('user'));
+      this.questionDetail = null;
 
     })
   }
 
   addQuestion(question) {
-    question.form.value.user_id = this.userId;
-    this.http.post<any>(this.appUrl +'/api/app/add_question', question.form.value).subscribe(data => {
+    this.user = JSON.parse(localStorage.getItem('user'));
+
+    question.form.value.user_id = this.user;
+    this.http.post<any>(this.appUrl + '/api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = null;
       this.subjectHide = true;
@@ -73,18 +92,34 @@ export class HomeComponent implements OnInit {
   }
 
   async eventStart() {
-    const response = await this.http.get(this.appUrl + '/api/app/delete_questions/'+ this.userId).toPromise();
+    this.user = JSON.parse(localStorage.getItem('user'));
+
+    const response = await this.http.get(this.appUrl + '/api/app/delete_questions/' + this.user).toPromise();
 
     this.questionFormShow = true;
+    this.homePage = false;
+
   }
 
   complate() {
-    this.questionDetail = "https://activty.herokuapp.com/questions/" + this.userId;
+    this.user = JSON.parse(localStorage.getItem('user'));
+
+    this.questionDetail = "https://activty.herokuapp.com/questions/" + this.user;
   }
 
-  
-  getReply(){
+
+  getReply() {
     this.route.navigateByUrl("/replys");
+
+  }
+
+  signOut() {
+    localStorage.removeItem('userId');
+    localStorage.clear();
+    this.user = null;
+    this.loginForm = false;
+    this.questionFormShow = false;
+    this.homePage = false;
 
   }
 
