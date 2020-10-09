@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
   complate() {
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    this.questionDetail = "https://www.activityapp.online/questions/" + this.user;
+    this.questionDetail = "https://activty.herokuapp.com/questions/" + this.user;
   }
 
 
