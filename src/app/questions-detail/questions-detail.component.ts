@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./questions-detail.component.scss']
 })
 export class QuestionsDetailComponent implements OnInit {
-  url: boolean;
+  urlId: boolean;
   appUrl: string;
   questions: object;
   subject: string;
@@ -21,13 +21,17 @@ export class QuestionsDetailComponent implements OnInit {
   thanks: boolean;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
-    this.url = this.activatedRoute.url['value']['1']['path'];
-    this.appUrl = "https://www.activityapp.online/";
+    var url = this.activatedRoute.url['value']['1']['path'];
+    var getUrlId = url.toString();
+    var split1 = getUrlId.split("34");
+    var split2 = split1[1].split("87");
+    this.urlId = split2[0];
+    this.appUrl = "https://localhost:44341/";
 
   }
 
   async getQuestion() {
-    const response = await this.http.get(this.appUrl + '/api/app/get_questions/' + this.url).toPromise();
+    const response = await this.http.get(this.appUrl + 'api/app/get_questions/' + this.urlId).toPromise();
     this.questions = response;
 
     for (let i = 0; i < Object.keys(response).length; i++) {
@@ -42,9 +46,9 @@ export class QuestionsDetailComponent implements OnInit {
 
 
   async addReply(questions) {
-    questions.form.value.userId = this.url;
+    questions.form.value.userId = this.urlId;
 
-    this.http.post<any>(this.appUrl + '/api/app/add_reply', questions.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/add_reply', questions.form.value).subscribe(data => {
       const result = data;
       this.thanks = true;
     })

@@ -22,7 +22,7 @@
         <fieldset *ngFor="let question of questions">
 
           <div *ngIf="question.question_type == 'metin'">
-            <legend><span class="number">1</span> {{question.question}}</legend>
+            <legend><span class="number">?</span> {{question.question}}</legend>
 
             <input type="text" id="name" name="{{question.question}}" [ngModel]="reply"
               style="margin-top: 3%;    height: 85px;">
@@ -30,7 +30,7 @@
 
 
           <div *ngIf="question.question_type == 'secenek'">
-            <legend><span class="number">2</span> {{question.question}}</legend>
+            <legend><span class="number">?</span> {{question.question}}</legend>
 
 
             <input type="radio" style="margin-top: 3%;" id="under_13" value="Evet" name="{{question.question}}"

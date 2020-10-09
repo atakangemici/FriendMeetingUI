@@ -21,24 +21,23 @@ export class HomeComponent implements OnInit {
   question: string;
   subject: string;
   question_type: string;
-  userId: number;
-  questionDetail: string;
+  userId: number;  questionsUrl: string;
   loginForm: boolean;
   subjectHide: boolean;
   url: boolean;
   appUrl: string;
   user: object;
-  homePage : boolean;
+  homePage: boolean;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute, private route: Router, private alerts: AlertsService) {
     this.url = false;
-    this.appUrl = "https://www.activityapp.online";
+    this.appUrl = "https://localhost:44341/";
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    if( this.user){
+    if (this.user) {
       this.homePage = true;
     }
-    else{
+    else {
       this.homePage = false;
 
     }
@@ -50,8 +49,8 @@ export class HomeComponent implements OnInit {
   }
 
   userAdd(user) {
-    this.http.post<any>(this.appUrl + '/api/app/register', user.form.value).subscribe(data => {
-      this.questionDetail = null;
+    this.http.post<any>(this.appUrl + 'api/app/register', user.form.value).subscribe(data => {
+      this.questionsUrl = null;
 
       if (data) {
         this.userId = data;
@@ -70,11 +69,11 @@ export class HomeComponent implements OnInit {
   }
 
   Login(user) {
-    this.http.post<any>(this.appUrl + '/api/app/login', user.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
       localStorage.setItem('user', JSON.stringify(this.userId));
       this.user = JSON.parse(localStorage.getItem('user'));
-      this.questionDetail = null;
+      this.questionsUrl = null;
 
     })
   }
@@ -83,7 +82,7 @@ export class HomeComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
 
     question.form.value.user_id = this.user;
-    this.http.post<any>(this.appUrl + '/api/app/add_question', question.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = null;
       this.subjectHide = true;
@@ -94,7 +93,7 @@ export class HomeComponent implements OnInit {
   async eventStart() {
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    const response = await this.http.get(this.appUrl + '/api/app/delete_questions/' + this.user).toPromise();
+    const response = await this.http.get(this.appUrl + 'api/app/delete_questions/' + this.user).toPromise();
 
     this.questionFormShow = true;
     this.homePage = false;
@@ -104,7 +103,7 @@ export class HomeComponent implements OnInit {
   complate() {
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    this.questionDetail = "https://activty.herokuapp.com/questions/" + this.user;
+    this.questionsUrl = "https://activty.herokuapp.com/questions/12468862934" + this.user + "87842331254";
   }
 
 

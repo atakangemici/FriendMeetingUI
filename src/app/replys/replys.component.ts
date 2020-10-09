@@ -15,7 +15,7 @@ export class ReplysComponent implements OnInit {
   avatar : string;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router) {
-    this.appUrl = "https://www.activityapp.online/";
+    this.appUrl = "https://localhost:44341/";
     this.user = JSON.parse(localStorage.getItem('user'));
 
     let photo = [
@@ -37,7 +37,7 @@ export class ReplysComponent implements OnInit {
     let user ={};
     user["id"] = this.user;
 
-    this.http.post<any>(this.appUrl + '/api/app/get_respondents',user ).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/get_respondents',user ).subscribe(data => {
       this.replys = data;
 
     })

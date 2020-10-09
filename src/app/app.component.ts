@@ -20,14 +20,15 @@ export class AppComponent {
   subject: string;
   question_type: string;
   userId: number;
-  questionDetail: string;
+  questionsUrl: string;
   loginForm: boolean;
   subjectHide: boolean;
   url: boolean;
+  appUrl: string;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = false;
-
+    this.appUrl = "https://localhost:44341/"
   }
 
   loginFormShow() {
@@ -35,7 +36,7 @@ export class AppComponent {
   }
 
   userAdd(user) {
-    this.http.post<any>('https://www.activityapp.online/api/app/register', user.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/register', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -43,7 +44,7 @@ export class AppComponent {
   }
 
   Login(user) {
-    this.http.post<any>('https://www.activityapp.online/api/app/login', user.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/login', user.form.value).subscribe(data => {
       this.userId = data;
       this.questionForm = true;
 
@@ -52,7 +53,7 @@ export class AppComponent {
 
   addQuestion(question) {
     question.form.value.user_id = this.userId;
-    this.http.post<any>('https://www.activityapp.online/api/app/add_question', question.form.value).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/add_question', question.form.value).subscribe(data => {
       let response = data;
       this.question = "";
       this.subjectHide = true;
@@ -64,8 +65,5 @@ export class AppComponent {
     this.userFormShow = true;
   }
 
-  complate() {
-    this.questionDetail = "https://activty.herokuapp.com/questions-detail/" + this.userId;
-  }
 
 }

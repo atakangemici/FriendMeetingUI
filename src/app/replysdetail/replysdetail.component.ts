@@ -16,7 +16,7 @@ export class ReplysdetailComponent implements OnInit {
 
   constructor(public http: HttpClient, private route: ActivatedRoute) {
     this.user = JSON.parse(localStorage.getItem('user'));
-    this.appUrl = "https://www.activityapp.online/";
+    this.appUrl = "https://localhost:44341/";
 
 
   }
@@ -24,14 +24,14 @@ export class ReplysdetailComponent implements OnInit {
     let user = {};
     user["id"] = this.replys;
 
-    this.http.post<any>(this.appUrl + '/api/app/get_replys', user).subscribe(data => {
+    this.http.post<any>(this.appUrl + 'api/app/get_replys', user).subscribe(data => {
       if (data.length > 0) {
         this.replys = data;
         this.subject = data[0]["subject"];
         this.respondentName = data[0]["respondent_name"];
       }
       else {
-        this.http.post<any>(this.appUrl + '/api/app/get_replys', user).subscribe(data => {
+        this.http.post<any>(this.appUrl + 'api/app/get_replys', user).subscribe(data => {
           if (data.length > 0) {
             this.replys = data;
             this.subject = data[0]["subject"];

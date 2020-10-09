@@ -9,10 +9,9 @@ import { ReplysdetailComponent } from './replysdetail/replysdetail.component';
 const routes: Routes = [
 
   { path: "", component: HomeComponent},
-  { path: "questions/:id", component: QuestionsDetailComponent},
+  { path: 'questions/:id' , component: QuestionsDetailComponent},
   { path: "replys", component: ReplysComponent},
   { path: "replysdetail/:id", component: ReplysdetailComponent}
-
 ];
 
 @NgModule({

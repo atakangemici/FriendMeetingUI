@@ -375,7 +375,7 @@
 
   </form>
 
-  <form style="padding-top: 5%;" *ngIf="questionFormShow && !questionDetail" #questionForm="ngForm">
+  <form style="padding-top: 5%;" *ngIf="questionFormShow && !questionsUrl" #questionForm="ngForm">
     <nav aria-label="breadcrumb" style="padding-top: 20%;">
       <ol class="breadcrumb">
         <i class="fa fa-cloud" aria-hidden="true"></i>
@@ -401,7 +401,7 @@
     </select>
     <div class="row">
       <div class="col-12"> <button type="button" class="btn btn-info" (click)="addQuestion(questionForm)"
-          style="margin-top: 15%;width: 100%;">Soruyu Ekle</button></div>
+          style="margin-top: 15%;width: 100%;">Soruyu Kaydet</button></div>
       <div class="col-12"> <button type="button" class="btn btn-danger" style="margin-top: 10%;width: 100%;"
           (click)="complate()">Bitir</button></div>
 
@@ -413,7 +413,7 @@
   </form>
 
 
-<div *ngIf="questionDetail && user" style="align-items: center;
+<div *ngIf="questionsUrl && user" style="align-items: center;
 display: flex;
 justify-content: center;
 height: 200px;">
@@ -429,9 +429,9 @@ height: 200px;">
 
 </div>
 
- <div *ngIf="questionDetail && user">
+ <div *ngIf="questionsUrl && user" style="text-align: center;">
     <label style="color:white;
-    ">{{questionDetail}}</label>
+    ">{{questionsUrl}}</label>
   </div>
 
 </div>
