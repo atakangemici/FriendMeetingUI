@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute, private route: Router, private alerts: AlertsService) {
     this.url = false;
     this.appUrl = "https://www.activityapp.online/";
+    // this.appUrl = "https://localhost:44341/"
+
     this.user = JSON.parse(localStorage.getItem('user'));
 
     if (this.user) {
@@ -54,9 +56,10 @@ export class HomeComponent implements OnInit {
 
       if (data) {
         this.userId = data;
+        localStorage.setItem('user', JSON.stringify(this.userId));
+
         this.user = JSON.parse(localStorage.getItem('user'));
 
-        localStorage.setItem('user', JSON.stringify(this.userId));
 
         this.alerts.setMessage('All the fields are required', 'success');
       }
