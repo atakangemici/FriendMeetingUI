@@ -1,9 +1,9 @@
 {
-  "name": "friends",
-  "short_name": "friends",
+  "name": "Activity",
+  "short_name": "Activity",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "scope": "./",
   "start_url": "/",
   "icons": [

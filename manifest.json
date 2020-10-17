@@ -1,6 +1,6 @@
 {
-  "name": "PWA-Demo Flight",
-  "short_name": "PWA Flight",
+  "name": "Activity",
+  "short_name": "Activity",
   "gcm_sender_id": "1004270452653",
   "permissions": [
     "gcm"
@@ -28,7 +28,7 @@
     }
   ],
   "start_url": "/",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "background_color": "#3E4EB8",
   "theme_color": "#2F3BA2"
 }
