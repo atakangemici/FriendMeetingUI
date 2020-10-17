@@ -28,8 +28,8 @@ export class AppComponent {
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute) {
     this.url = false;
-    this.appUrl = "https://www.activityapp.online/"
-    // this.appUrl = "https://localhost:44341/"
+    // this.appUrl = "https://www.activityapp.online/"
+    this.appUrl = "https://localhost:44341/"
 
   }
 

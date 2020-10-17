@@ -15,6 +15,8 @@ import { ReplysdetailComponent } from './replysdetail/replysdetail.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertsModule } from 'angular-alert-module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { AlertsModule } from 'angular-alert-module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AlertsModule.forRoot()
+    AlertsModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
 
   ],

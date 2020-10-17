@@ -16,8 +16,8 @@ export class ReplysComponent implements OnInit {
   emptyReplys : boolean;
 
   constructor(public http: HttpClient, public activatedRoute: ActivatedRoute,private route:Router) {
-    this.appUrl = "https://www.activityapp.online/";
-    // this.appUrl = "https://localhost:44341/"
+    // this.appUrl = "https://www.activityapp.online/";
+    this.appUrl = "https://localhost:44341/"
 
     this.user = JSON.parse(localStorage.getItem('user'));
 
