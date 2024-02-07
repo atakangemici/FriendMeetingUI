@@ -1,11 +1,7 @@
 {
   "name": "friends",
   "version": "0.0.0",
-  "engines": {
-    "node": "v10.15.3",
-    "npm": "6.4.1"
-  },
- "scripts": {
+  "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
